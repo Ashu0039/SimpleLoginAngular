@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>Akonet Login</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body ng-app="akonet">
+    <div class="container">
+      <form ng-submit="login()" ng-controller="loginCtrl">
+        <h2>Login</h2>
+        <label for="mobile">Mobile Number</label>
+        <input type="text" id="mobile" ng-model="mobileNumber" class="form-control" placeholder="Mobile Number" required autofocus></input>
+        <label for="password">Password</label>
+        <input type="password" id="password" ng-model="password" class="form-control" placeholder="Password" required></input>
+        <input type="submit" id="submit" value="Log In" />
+        <pre>{{responseMessage}}</pre>
+      </form>
+    </div>
+  </body>
+</html>
