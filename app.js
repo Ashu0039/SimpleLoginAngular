@@ -47,4 +47,10 @@ app.controller('loginCtrl', ['$scope', '$http', function($scope, $http) {
       akonectSocket.emit("send_msg", {"msg_type" : "CHAT", "txt" : message, "to_uid" : user.uid});
       msgBox.value = "";
     }
+    
+      
+    function addNewMsg(messageData) {
+        $scope.messageList.push(messageData);
+        return;
+    }
   }]);
