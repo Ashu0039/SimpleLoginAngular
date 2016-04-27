@@ -1,5 +1,5 @@
-angular.module('akonet', [])
-  .controller('loginCtrl', ['$scope', '$http', function($scope, $http) {
+var app = angular.module('akonet', []);
+app.controller('loginCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.login = function() {
       var mobileNum = $scope.mobileNumber;
       var pwd = $scope.password;
@@ -26,4 +26,25 @@ angular.module('akonet', [])
         })
 
     };
+  }]);
+  
+  app.controller('MessageCtrl', ['$scope', function($scope) {
+    $scope.messageList = [];
+    
+    var messageBox = document.getElementById("messageBox");
+    messageBox.bind('keyup', function(e) {
+      if(e.keyCode === 13) {
+        sendMessage();
+      }
+    });
+    
+    var sendBtn = document.getElementById("sendBtn");
+    sendBtn.onclick = sendMessage();
+    
+    function sendMessage() {
+      var msgBox = document.getElementById("messageBox");
+      var message = msgBox.value;
+      akonectSocket.emit("send_msg", {"msg_type" : "CHAT", "txt" : message, "to_uid" : user.uid});
+      msgBox.value = "";
+    }
   }]);
