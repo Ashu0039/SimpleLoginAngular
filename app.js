@@ -13,11 +13,14 @@ angular.module('akonet', [])
       $http.post("http://api.akonect.com:3010/auth/web-login", data)
         .then(function(response){
           var responseData = response.data;
-          if(responseData.err) {
+          if(responseData.status === 99 ) {
             $scope.responseMessage = responseData.err;
             console.error(responseData.err);
+          } else if(responseData.status === 1) {
+            $scope.responseMessage = "Welcome " + responseData.name + " to chat!!";
+          } else {
+            $scope.responseMessage = "Error: Unknown response from server.";
           }
-
         }, function(error) {
           console.error(error);
         })
