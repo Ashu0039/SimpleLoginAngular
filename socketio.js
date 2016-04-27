@@ -7,14 +7,10 @@ akonectSocket.emit('join_uid', {
 });
 
 
-akonectSocket.emit('send_msg', {
-  msg_type : 'CHAT',
-  txt : 'sample text',
-  to_uid : 'aktprototype'
-});
+// akonectSocket.emit('send_msg', {
+//   msg_type : 'CHAT',
+//   txt : 'sample text',
+//   to_uid : 'aktprototype'
+// });
 
-akonectSocket.on('rcv_doc', function(data) {
-  console.log("Msg type: ", data.msg_type);
-  console.log("Text: ", data.txt);
-  console.log("User Id: ", data.to_uid);
-});
+akonectSocket.on('rcv_doc', addNewMsg(data));
