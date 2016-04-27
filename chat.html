@@ -1,0 +1,7 @@
+<div class="container" ng-controller="MessageCtrl">
+  <li ng-repeat="messageObj in messageList">
+    {{ messageObj.userName  }} --> {{ messageObj.message }}
+  </li>
+  <input type="text" id="msgBox" placeholder="Type here.."></input>
+  <button id="sendMsg">Send</button>
+</div>
