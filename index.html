@@ -11,8 +11,8 @@
     <script src="app.js"></script>
   </head>
   <body ng-app="akonet">
-    <div class="container">
-      <form ng-submit="login()" ng-controller="loginCtrl">
+    <div class="container" ng-controller="loginCtrl">
+      <form ng-submit="login()">
         <h2>Login</h2>
         <label for="mobile">Mobile Number</label>
         <input type="text" id="mobile" ng-model="mobileNumber" class="form-control" placeholder="Mobile Number" required autofocus></input>
@@ -22,5 +22,6 @@
         <pre>{{responseMessage}}</pre>
       </form>
     </div>
+
   </body>
 </html>

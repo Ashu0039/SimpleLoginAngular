@@ -1,7 +1,21 @@
-<div class="container" ng-controller="MessageCtrl">
-  <li ng-repeat="messageObj in messageList">
-    {{ messageObj.userName  }} --> {{ messageObj.message }}
-  </li>
-  <input type="text" id="msgBox" placeholder="Type here.."></input>
-  <button id="sendMsg">Send</button>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="socketio.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body ng-app="akonet">
+    <div class="container" ng-controller="messageCtrl">
+      <li ng-repeat="messageObj in messageList">
+        {{messageObj.userName}} --> {{messageObj.message}}
+      </li>
+      <input type="text" id="msgBox" placeholder="Type here.." ng-model="msgBox"></input>
+      <button id="sendMsg" ng-click="sendMessage()">Send</button>
+    </div>
+  </body>
+</html>

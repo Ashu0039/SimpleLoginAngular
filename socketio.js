@@ -4,6 +4,8 @@ akonectSocket.emit('join_uid', {
   uid : 'uid_response_from_login',
   token : 'token_from_login',
   device : 'web'
+}, function(response) {
+  console.log(response);
 });
 
 
@@ -14,3 +16,8 @@ akonectSocket.emit('join_uid', {
 // });
 
 akonectSocket.on('rcv_doc', addNewMsg(data));
+
+function addNewMsg(messageData) {
+    $scope.messageList.push(messageData);
+    return;
+}

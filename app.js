@@ -1,5 +1,6 @@
 var app = angular.module('akonet', []);
-app.controller('loginCtrl', ['$scope', '$http', function($scope, $http) {
+
+app.controller('loginCtrl', ['$scope', '$http', '$window', function($scope, $http, $window) {
     $scope.login = function() {
       var mobileNum = $scope.mobileNumber;
       var pwd = $scope.password;
@@ -18,6 +19,9 @@ app.controller('loginCtrl', ['$scope', '$http', function($scope, $http) {
             console.error(responseData.err);
           } else if(responseData.status === 1) {
             $scope.responseMessage = "Welcome " + responseData.name + " to chat!!";
+            console.log($window.location);
+            $window.location.href = '/Users/Demo/Desktop/Angular/SimpleLoginAngular/chat.html';
+            console.log("Login successful!!");
           } else {
             $scope.responseMessage = "Error: Unknown response from server.";
           }
@@ -27,30 +31,15 @@ app.controller('loginCtrl', ['$scope', '$http', function($scope, $http) {
 
     };
   }]);
-  
-  app.controller('MessageCtrl', ['$scope', function($scope) {
+
+  app.controller('messageCtrl', ['$scope', function($scope) {
+    console.log("Inside controller");
     $scope.messageList = [];
-    
-    var messageBox = document.getElementById("messageBox");
-    messageBox.bind('keyup', function(e) {
-      if(e.keyCode === 13) {
-        sendMessage();
-      }
-    });
-    
-    var sendBtn = document.getElementById("sendBtn");
-    sendBtn.onclick = sendMessage();
-    
-    function sendMessage() {
-      var msgBox = document.getElementById("messageBox");
-      var message = msgBox.value;
+
+    $scope.sendMessage = function() {
+      var message = $scope.msgBox;
+      console.log("Sending a message: ", message);
       akonectSocket.emit("send_msg", {"msg_type" : "CHAT", "txt" : message, "to_uid" : user.uid});
-      msgBox.value = "";
-    }
-    
-      
-    function addNewMsg(messageData) {
-        $scope.messageList.push(messageData);
-        return;
+      $scope.msgBox = "";
     }
   }]);
