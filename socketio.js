@@ -18,6 +18,7 @@ akonectSocket.emit('join_uid', {
 akonectSocket.on('rcv_doc', addNewMsg(data));
 
 function addNewMsg(messageData) {
-    $scope.messageList.push(messageData);
+    //  wrong code  $scope.messageList.push(messageData);
+    //  add code to handle adding new msg
     return;
 }
